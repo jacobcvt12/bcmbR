@@ -126,7 +126,8 @@ sd(homework) # what's the standard deviation of homeworks?
 
 ```{r}
 site <- "http://www.ats.ucla.edu/stat/data/hsb2.csv"
-ucla.data <- read.csv(site) # same function for reading local data
+# same function for reading local data
+ucla.data <- read.csv(site) 
 ```
 
 ## Looking at data
