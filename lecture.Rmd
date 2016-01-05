@@ -27,6 +27,7 @@ output:
 ## Variables
 
 - Variables (among other things) separate R from a calculator
+    - The `<-` symbol indicates **assignment** of a *value* to *variable*
 - Allow you to *descriptively* name an important number for combination with other *descriptively* named numbers
 - Lots of restrictions about them
 
