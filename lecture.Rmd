@@ -168,7 +168,11 @@ t.test(ucla.data$math, ucla.data$science, paired=TRUE)
 ```{r}
 # are the writing scores between genders different?
 t.test(write ~ female, data=ucla.data)
+```
 
+## Data Frames
+
+```{r}
 # 'subset' the data and only keep the female students
 female.data <- subset(ucla.data, # data name
                       female == 1) # conditions for keeping data (note the '==' equality)
