@@ -164,12 +164,23 @@ lines(lowess(ucla.data$read, ucla.data$write),
 ```
 
 ## ggplot2
-```{r}
+- ggplot2 graphing requires very different syntax from base R...
+
+```{r, message=FALSE}
 # note that every new session of R requires packages to be loaded manually
+library(ggplot2)
+
+# histogram
+ggplot(data=ucla.data, aes(x=write)) +
+    geom_histogram() + 
+    xlab("Writing") +
+    ggtitle("Distribution")
+
+# investigate distribution of science scores by SES
+ggplot(data=ucla.data, aes(x=science)) +
+    geom_histogram(aes(fill=as.character(ses))) + # note that grouping variable must be a character
+    xlab("Writing") + 
+    ggtitle("Distributions by Socioeconomic Status")
 ```
 
-
-
 ## Getting Help?
-
-
