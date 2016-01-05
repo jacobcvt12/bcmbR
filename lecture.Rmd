@@ -3,10 +3,10 @@ title: "Intro to R"
 author: "Jacob Carey"
 date: \today
 output: 
-  html_document
-#  beamer_presentation:
-#    theme: "Szeged"
-#    slide_level: 2
+#  html_document
+  beamer_presentation:
+    theme: "Szeged"
+    slide_level: 2
 ---
 
 # Basics
