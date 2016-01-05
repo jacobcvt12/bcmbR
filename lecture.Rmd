@@ -3,9 +3,10 @@ title: "Intro to R"
 author: "Jacob Carey"
 date: \today
 output: 
-  beamer_presentation:
-    theme: "Szeged"
-    slide_level: 2
+  html_document
+#  beamer_presentation:
+#    theme: "Szeged"
+#    slide_level: 2
 ---
 
 # Basics
@@ -49,6 +50,38 @@ variable.character <- "hello" # store a word in a variable
 variable.number * 2 # use the variable to do something
 
 variable.number + variable.character # can I add a number and a character?
+```
+
+## Vectors
+
+- Vectors in R a (ordered, but possibly not sorted) collection of *one type of variable*
+- They allow you to perform operations across multiple numbers, characters, etc
+    - Allow you to do stuff with basic *data*
+- One way to create a variable is through the `c` *command*
+
+```{r}
+vecture.numbers <- c(4.3, 7.1, 5.0, 3.1) # collection of numerics
+vector.error <- c("ab", 4.3, 2.1, 17.8) # must be one type of variable!
+vector.error # inspect contents
+```
+
+- notice that `vector.error` has *coerced* the numeric data to character data
+    - Remember: a vector is a collection of **one type of variable**
+
+## Functions
+
+- R allows you to use many *built-in* as well as *third-party* (available through downloadable packages) to do many useful things with data
+- Want to calculate the mean of your data? Use a function!
+- Want to do a t-test? Use a function!
+- Functions are syntactically written as `function.name(arg1, arg2, ...)` 
+    - Number of arguments can vary from 0 to essentially unlimited
+    - Arguments can be variables, vectors, etc. 
+    - Arguments can sometimes be other functions!
+
+```{r}
+homework <- c(99, 85, 90, 86, 30, 75) # c is a function too!
+mean(homework) # what's the mean homework score?
+sd(homework) # what's the standard deviation of the homework score?
 ```
 
 # Actually being useful
