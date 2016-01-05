@@ -99,6 +99,25 @@ ucla.data <- read.csv("http://www.ats.ucla.edu/stat/data/hsb2.csv") # same funct
 head(ucla.data) # inspect data
 ```
 
+## Data Frames
+
+- What type of variable is `ucla.data`?
+    - It's a **data frame** which is just a collection of *named* vectors that are all the same length
+    - These individual *variables* or *columns* can be accessed using the cryptic looking `$` symbol
+
+```{r}
+# mean math score
+mean(ucla.data$math) 
+
+# t test comparing the math and science distributions
+t.test(ucla.data$math, ucla.data$science, paired=TRUE)
+```
+
+- Word of *warning*
+    - The `attach` function can be used to access variables in a dataset without the dataset name and `$`, but can cause issues further down the line
+    - Avoid `attach` if you can!
+
 ## Getting Help?
 
+## Installing packages
 
