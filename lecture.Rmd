@@ -9,6 +9,10 @@ output:
     slide_level: 2
 ---
 
+```{r, echo=FALSE}
+knitr::opts_chunk$set(fig.height=3, fig.height=3)
+```
+
 # Basics
 
 ## Adding Numbers and Calculating Tips
@@ -42,15 +46,17 @@ output:
     - Must begin with a character
     - Be descriptive!
 
+## Variables
+
 ```{r, error=TRUE}
 variable.number <- 4 # store a number in a variable
 variable.number
 
-variable.character <- "hello" # store a word in a variable
-
+variable.character <- "hello" # store a word
 variable.number * 2 # use the variable to do something
 
-variable.number + variable.character # can I add a number and a character?
+# can I add a number and a character?
+variable.number + variable.character 
 ```
 
 ## Vectors
@@ -59,10 +65,15 @@ variable.number + variable.character # can I add a number and a character?
 - They allow you to perform operations across multiple numbers, characters, etc
     - Allow you to do stuff with basic *data*
 - One way to create a variable is through the `c` *command*
+- Additionally, R supports the `:` operator to generate a sequence of integers
+
+## Vectors
 
 ```{r}
-vector.numbers <- c(4.3, 7.1, 5.0, 3.1) # collection of numerics
-vector.error <- c("ab", 4.3, 2.1, 17.8) # must be one type of variable!
+vector.simple <- 1:5
+vector.simple # inspect contents
+vector.numbers <- c(4.3, 7.1, 5.0, 3.1) # numerics
+vector.error <- c("ab", 4.3, 2.1, 17.8)
 vector.error # inspect contents
 ```
 
@@ -77,6 +88,8 @@ vector.error # inspect contents
     - `==` Equal to
     - `!=` Not equal to
 - For vector data, comparisons are made element-wise 
+
+## Comparisons
 
 ```{r}
 4 > 2
@@ -94,10 +107,12 @@ vector.numbers < 6
     - Arguments can be variables, vectors, etc. 
     - Arguments can sometimes be other functions!
 
+## Functions
+
 ```{r}
-homework <- c(99, 85, 90, 86, 30, 75) # c is a function too!
+homework <- c(99, 85, 90, 86, 30, 75)
 mean(homework) # what's the mean homework score?
-sd(homework) # what's the standard deviation of the homework score?
+sd(homework) # what's the standard deviation of homeworks?
 ```
 
 # Actually being useful
@@ -110,9 +125,20 @@ sd(homework) # what's the standard deviation of the homework score?
 - Simplest function for reading CSV data is `read.csv`
 
 ```{r}
-ucla.data <- read.csv("http://www.ats.ucla.edu/stat/data/hsb2.csv") # same function for reading local data
+site <- "http://www.ats.ucla.edu/stat/data/hsb2.csv"
+ucla.data <- read.csv(site) # same function for reading local data
+```
+
+## Looking at data
+
+```{r}
 head(ucla.data) # inspect data using the head function
 ucla.data[100, ] # view the 100th row
+```
+
+## Looking at data
+
+```{r}
 summary(ucla.data) # calculate default summary statistics of every variable
 ```
 
@@ -122,18 +148,21 @@ summary(ucla.data) # calculate default summary statistics of every variable
     - It's a **data frame** which is just a collection of *named* vectors that are all the same length
     - These individual *variables* or *columns* can be accessed using the cryptic looking `$` symbol
 
-```{r}
-# mean math score
-mean(ucla.data$math) 
+## Data Frames
 
+```{r}
 # t test comparing the math and science distributions
 t.test(ucla.data$math, ucla.data$science, paired=TRUE)
 ```
+
+## Data Frames
 
 - Word of *warning*
     - The `attach` function can be used to access variables in a dataset without the dataset name and `$`, but can cause issues further down the line
     - Avoid `attach` if you can!
 - Instead, many functions support `data` as an argument, and allow variables to be called by name
+
+## Data Frames
 
 ```{r}
 # are the writing scores between genders different?
@@ -146,7 +175,7 @@ female.data <- subset(ucla.data, # data name
 
 ## Installing packages
 
-- Simple!
+Simple!
 
 ```{r, eval=FALSE}
 install.packages("ggplot2") # install the package
@@ -164,12 +193,19 @@ cor(ucla.data$write, ucla.data$read)
 ```
 
 ## Regression
-```{r} 
-# make inference about math from science and reading (linear regression)
-lm(math ~ science + read, data=ucla.data)
 
-# make inference about gender from science and reading (logistic regression)
-glm(female ~ science + read, data=ucla.data, family=binomial)
+```{r} 
+# make inference about math from science and reading 
+# (linear regression)
+lm(math ~ science + read, data=ucla.data)
+```
+
+## Regression
+
+```{r}
+# inference about gender from reading (logistic)
+glm(female ~ science + read, data=ucla.data, 
+    family=binomial)
 ```
 
 # Plotting
@@ -185,8 +221,11 @@ glm(female ~ science + read, data=ucla.data, family=binomial)
 ```{r}
 # histogram
 hist(ucla.data$write)
+```
 
-# scatterplot of reading and writing scores
+## Base R
+
+```{r, eval=FALSE}
 # note that functions can run across multiple lines!
 plot(ucla.data$read, ucla.data$write, # x and y data
      main="Plot of scores", # main title
@@ -203,24 +242,113 @@ lines(lowess(ucla.data$read, ucla.data$write),
       col="orange")            # color this line orange
 ```
 
+## Base R
+
+```{r, echo=FALSE, fig.height=7, fig.width=7}
+plot(ucla.data$read, ucla.data$write, # x and y data
+     main="Plot of scores", # main title
+     xlab="Reading", # x axis label
+     ylab="Writing") # y axis label
+
+# add a line comparing math and science
+lines(sort(ucla.data$math),    # functions 
+      sort(ucla.data$science), # inside of functions!
+      col="blue")              # color this line blue
+
+# add a smoother to the scatter plot
+lines(lowess(ucla.data$read, ucla.data$write),
+      col="orange")           # color this line orange
+```
+
 ## ggplot2
-- ggplot2 graphing requires very different syntax from base R...
+
+ggplot2 graphing requires very different syntax from base R
 
 ```{r, message=FALSE}
-# note that every new session of R requires packages to be loaded manually
+# note that every new session of R requires 
+# packages to be loaded manually
 library(ggplot2)
+```
 
+## ggplot2
+
+```{r, message=FALSE}
 # histogram
 ggplot(data=ucla.data, aes(x=write)) +
     geom_histogram() + 
     xlab("Writing") +
     ggtitle("Distribution")
+```
 
+## ggplot2
+
+```{r, message=FALSE}
 # investigate distribution of science scores by SES
 ggplot(data=ucla.data, aes(x=science)) +
-    geom_histogram(aes(fill=as.character(ses))) + # note that grouping variable must be a character
+    geom_histogram(aes(fill=as.character(ses))) + 
+    # note that grouping variable must be a character
     xlab("Writing") + 
     ggtitle("Distributions by Socioeconomic Status")
 ```
 
+# Further work / Advanced
+
 ## Getting Help?
+
+**Switch to RStudio**
+
+## if statements
+
+`if` statements create conditional outputs
+
+```{r}
+x <- 4
+
+if (x > 6) {
+    print("x is greater than 6") 
+} else if (x <= 6 && x > 0) {
+    print("x is less than or equal to 6 and greater than 0") 
+} else {
+    print("x is less than or equal to 0")
+}
+```
+
+## Custom functions 
+
+```{r, eval=FALSE}
+function.name <- function(arg1, arg2) {
+    args.added <- arg1 + arg2
+
+    return(args.added)
+}
+```
+
+## Custom functions 
+
+```{r}
+pointwise <- function(x, limit=0) {
+    if (x < limit) {
+        return(0) 
+    } else {
+        return(x)
+    }
+}
+
+pointwise(4)
+```
+
+## Custom functions 
+
+- Note about "optional arguments"
+    - If an argument has an associated value in function construction, that argument is optional and will take the listed default value if not passed to the function
+
+## For loops
+
+Combined with custom functions and you can do pretty much anything you want!
+
+```{r}
+collection <- 1:5
+for (x in collection) {
+    print(x ^ 2)
+}
+```
