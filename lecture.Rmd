@@ -116,8 +116,60 @@ t.test(ucla.data$math, ucla.data$science, paired=TRUE)
 - Word of *warning*
     - The `attach` function can be used to access variables in a dataset without the dataset name and `$`, but can cause issues further down the line
     - Avoid `attach` if you can!
+- Instead, many functions support `data` as an argument, and allow variables to be called by name
+
+```{r}
+# are the writing scores between genders different?
+t.test(write ~ female, data=ucla.data)
+```
+
+## Installing packages
+
+- Simple!
+
+```{r, eval=FALSE}
+install.packages("ggplot2") # install the package
+library(ggplot2)            # now load the package
+```
+
+# Plotting
+
+## Intro
+
+- Analysis is all well and good, but how do we *look* at our data?
+- Many options but most people use either
+    1. Base R functions
+    2. The ggplot2 package
+
+## Base R
+```{r}
+# histogram
+hist(ucla.data$write)
+
+# scatterplot of reading and writing scores
+# note that functions can run across multiple lines!
+plot(ucla.data$read, ucla.data$write, # x and y data
+     main="Plot of scores", # main title
+     xlab="Reading", # x axis label
+     ylab="Writing") # y axis label
+
+# add a line comparing math and science
+lines(sort(ucla.data$math),    # functions inside of functions!
+      sort(ucla.data$science), 
+      col="blue")              # color this line blue
+
+# add a smoother to the scatter plot
+lines(lowess(ucla.data$read, ucla.data$write),
+      col="orange")            # color this line orange
+```
+
+## ggplot2
+```{r}
+# note that every new session of R requires packages to be loaded manually
+```
+
+
 
 ## Getting Help?
 
-## Installing packages
 
