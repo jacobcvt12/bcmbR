@@ -61,13 +61,28 @@ variable.number + variable.character # can I add a number and a character?
 - One way to create a variable is through the `c` *command*
 
 ```{r}
-vecture.numbers <- c(4.3, 7.1, 5.0, 3.1) # collection of numerics
+vector.numbers <- c(4.3, 7.1, 5.0, 3.1) # collection of numerics
 vector.error <- c("ab", 4.3, 2.1, 17.8) # must be one type of variable!
 vector.error # inspect contents
 ```
 
 - notice that `vector.error` has *coerced* the numeric data to character data
     - Remember: a vector is a collection of **one type of variable**
+
+## Comparisons
+
+- R supports comparison operators
+    - `>` greater than
+    - `<` less than
+    - `==` Equal to
+    - `!=` Not equal to
+- For vector data, comparisons are made element-wise 
+
+```{r}
+4 > 2
+vector.numbers == 7.1
+vector.numbers < 6
+```
 
 ## Functions
 
