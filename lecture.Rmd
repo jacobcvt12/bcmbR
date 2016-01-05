@@ -115,7 +115,7 @@ mean(homework) # what's the mean homework score?
 sd(homework) # what's the standard deviation of homeworks?
 ```
 
-# Actually being useful
+# Moving beyond calculators
 
 ## Reading in Data
 
