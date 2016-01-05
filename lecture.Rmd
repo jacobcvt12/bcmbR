@@ -4,6 +4,7 @@ author: "Jacob Carey"
 date: \today
 output: 
   beamer_presentation:
+    toc: true
     theme: "Szeged"
     slide_level: 2
 ---
