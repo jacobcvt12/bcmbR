@@ -1,0 +1,36 @@
+---
+title: "Intro to R"
+author: "Jacob Carey"
+date: \today
+output: 
+  html_document
+#  beamer_presentation:
+#    theme: "Szeged"
+#    slide_level: 2
+---
+
+# Basics
+
+# Adding Numbers and Calculating Tips
+
+```{r}
+# What's 2 + 2?
+2 + 2
+
+# How much do I need to tip on $40?
+40 * 0.15
+
+# What's the probability of three heads?
+0.5 ^ 3
+```
+
+# Variables
+
+```{r}
+```
+
+## Reading in Data
+
+## Getting Help?
+
+
