@@ -3,15 +3,14 @@ title: "Intro to R"
 author: "Jacob Carey"
 date: \today
 output: 
-  html_document
-#  beamer_presentation:
-#    theme: "Szeged"
-#    slide_level: 2
+  beamer_presentation:
+    theme: "Szeged"
+    slide_level: 2
 ---
 
 # Basics
 
-# Adding Numbers and Calculating Tips
+## Adding Numbers and Calculating Tips
 
 ```{r}
 # What's 2 + 2?
@@ -24,10 +23,35 @@ output:
 0.5 ^ 3
 ```
 
-# Variables
+## Variables
 
-```{r}
+- Variables (among other things) separate R from a calculator
+- Allow you to *descriptively* name an important number for combination with other *descriptively* named numbers
+- Lots of restrictions about them
+
+- There are four primary types of variables
+    1. Numeric (1.45)
+    2. Integer (3)
+    3. Character ("hello, world")
+    4. Boolean (TRUE)
+
+- Naming variables
+    - contains only characters (case matters!!), numbers, periods, and underscores
+    - Must begin with a character
+    - Be descriptive!
+
+```{r, error=TRUE}
+variable.number <- 4 # store a number in a variable
+variable.number
+
+variable.character <- "hello" # store a word in a variable
+
+variable.number * 2 # use the variable to do something
+
+variable.number + variable.character # can I add a number and a character?
 ```
+
+# Actually being useful
 
 ## Reading in Data
 
