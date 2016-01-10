@@ -329,15 +329,15 @@ Many of other provided distributions, such as binomial, gamma, beta, etc.
 - Analysis is all well and good, but how do we *look* at our data?
 - Many options but most people use either
     1. Base R functions
-    2. The ggplot2 package
+    2. The ggplot2 package (Not discussed here)
 
-## Base R
+## Histograms
 ```{r}
 # histogram
 hist(ucla.data$write)
 ```
 
-## Base R
+## Scatterplot
 
 ```{r, eval=FALSE}
 # note that functions can run across multiple lines!
@@ -356,7 +356,7 @@ lines(lowess(ucla.data$read, ucla.data$write),
       col="orange")            # color this line orange
 ```
 
-## Base R
+## Scatterplot
 
 ```{r, echo=FALSE, fig.height=7, fig.width=7}
 plot(ucla.data$read, ucla.data$write, # x and y data
@@ -372,37 +372,6 @@ lines(sort(ucla.data$math),    # functions
 # add a smoother to the scatter plot
 lines(lowess(ucla.data$read, ucla.data$write),
       col="orange")           # color this line orange
-```
-
-## ggplot2
-
-ggplot2 graphing requires very different syntax from base R
-
-```{r, message=FALSE}
-# note that every new session of R requires 
-# packages to be loaded manually
-library(ggplot2)
-```
-
-## ggplot2
-
-```{r, message=FALSE}
-# histogram
-ggplot(data=ucla.data, aes(x=write)) +
-    geom_histogram() + 
-    xlab("Writing") +
-    ggtitle("Distribution")
-```
-
-## ggplot2
-
-```{r, message=FALSE}
-# investigate distribution of science scores by SES
-ggplot(data=ucla.data, aes(x=science)) +
-    geom_histogram(aes(fill=as.character(ses))) + 
-    # note that grouping variable must be a character
-    xlab("Writing") + 
-    ggtitle("Distributions by Socioeconomic Status")
 ```
 
 # Further work / Advanced
