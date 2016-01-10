@@ -253,6 +253,21 @@ female.data <- subset(ucla.data, # data name
                       female == 1)
 ```
 
+## Data Frames
+
+```{r}
+# keep the second column
+column.two <- ucla.data[, 2]
+
+# keep all columns and rows 4 to 6
+rows.four.to.six <- ucla.data[4:6, ]
+
+# keep columns one and three and rows 2 through 5
+subsetted.data <- ucla.data[2:5, c(1, 3)]
+```
+
+Note that these same subset methods will also work with matrix data!
+
 ## Installing packages
 
 Simple!
