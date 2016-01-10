@@ -13,15 +13,49 @@ output:
 
 ```{r, echo=FALSE}
 knitr::opts_chunk$set(fig.height=3, fig.height=3)
+
+# matrix example
+library(CoGAPS)
+data(SimpSim)
+micro.array.data <- SimpSim.D[1:5, 1:5]
+
+# data frame example
+set.seed(1)
+case.control <- data.frame(case.status=rbinom(10, 1, 0.5),
+                           father.status=sample(c("Diseased",
+                                                  "Not diseased"),
+                                                2))
 ```
 
 # Why R?
 
 ## Data Structures
 
-## Examples
+- R is a *statistical* **programming** language
+- Many provided *data structures* for handling distinct scenarios
+- A matrix can handle $n$ rows and $m$ columns of numeric data
+    - Use case: microarray data for $n$ genes from $m$ samples
+- Data frames are a robust solution to handle all sorts of tabular data
+    - Use case: case control status of individuals with candidate heritable traits of parents listed
+
+## Example (Matrix)
+
+```{r}
+# Microarray data
+micro.array.data
+```
+
+## Example (Data Frame)
+
+```{r}
+# Microarray data
+case.control
+```
 
 ## Bioconductor
+
+- Repository for third party R code
+- "Bioconductor provides tools for the analysis and comprehension of high-throughput genomic data."
 
 # Basics
 
