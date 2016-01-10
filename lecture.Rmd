@@ -254,6 +254,25 @@ glm(female ~ science + read, data=ucla.data,
     family=binomial)
 ```
 
+## Random Variables in R
+
+>- Many times we have assumptions about the data and models, but program the analysis incorrectly
+>- How can we check for this?
+>- R allows for drawing from parameterized distributions!
+
+## Random Variables in R
+
+Basic scenario: 50 observations from the same normal distribution and we are interested in the mean
+
+```{r}
+y <- rnorm(n=50,    # number of draws
+           mean=14, # mean of distribution
+           sd=5)    # Standard deviation
+mean(y)
+```
+
+Many of other provided distributions, such as binomial, gamma, beta, etc.
+
 # Plotting
 
 ## Intro
