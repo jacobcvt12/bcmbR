@@ -188,7 +188,7 @@ What is the value z? \\
 \end{column}
 \end{columns}
 
-# Moving beyond calculators
+# Next Steps
 
 ## Reading in Data
 
@@ -277,7 +277,7 @@ install.packages("ggplot2") # install the package
 library(ggplot2)            # now load the package
 ```
 
-# Basic statistics with R
+# Statistics
 
 ## Correlation, Covariance, and Variance
 
@@ -324,7 +324,7 @@ Many of other provided distributions, such as binomial, gamma, beta, etc.
 
 # Plotting
 
-## Intro
+## Intro to plotting
 
 - Analysis is all well and good, but how do we *look* at our data?
 - Many options but most people use either
@@ -336,6 +336,7 @@ Many of other provided distributions, such as binomial, gamma, beta, etc.
 # histogram
 hist(ucla.data$write)
 ```
+
 
 ## Scatterplot
 
@@ -374,11 +375,42 @@ lines(lowess(ucla.data$read, ucla.data$write),
       col="orange")           # color this line orange
 ```
 
-# Further work / Advanced
+
+# Advanced
 
 ## Getting Help?
 
 **Switch to RStudio**
+
+## Lists
+
+- Data frames and matrices required vectors of the same length
+- A list is a collection of any type of object of any length!
+```{r}
+list.ex <- list(x=4, y=c("a", "b"), z=c(1, 5, 3))
+list.ex$x      # access with "$"
+list.ex[["y"]] # access with double brackets
+```
+
+## Lists
+
+Apply a function to each element of a list
+
+```{r}
+# returns a "vector"
+sapply(list.ex, # list object
+       length)  # name of function
+```
+
+## Lists
+
+```{r}
+# returns a "list"
+lapply(list.ex, # list object
+       length)  # name of function
+```
+
+Same arguments!
 
 ## if statements
 
