@@ -2,6 +2,8 @@
 title: "Intro to R"
 author: "Jacob Carey"
 date: \today
+header-includes:
+   - \usepackage{inconsolata}
 output: 
   beamer_presentation:
     toc: true
@@ -12,6 +14,14 @@ output:
 ```{r, echo=FALSE}
 knitr::opts_chunk$set(fig.height=3, fig.height=3)
 ```
+
+# Why R?
+
+## Data Structures
+
+## Examples
+
+## Bioconductor
 
 # Basics
 
@@ -114,6 +124,35 @@ homework <- c(99, 85, 90, 86, 30, 75)
 mean(homework) # what's the mean homework score?
 sd(homework) # what's the standard deviation of homeworks?
 ```
+
+## Quiz
+
+\begin{columns}
+\begin{column}{0.48\textwidth}
+1. Which of these expressions will give an error when evaluated in R? \\
+    a. \texttt{2 >= 2} \\
+    b. \texttt{x=245} \\
+    c. \texttt{3=3} \\
+    d. \texttt{17==17} \\
+2. What type of variable is x, if I assign it like this:  x <- "6" \\
+    a. data frame \\
+    b. integer \\
+    c. numeric \\
+    d. character
+\end{column}
+\begin{column}{0.48\textwidth}
+3. My code: \\
+   \texttt{x <- 30} \\
+   \texttt{y <- 0.6} \\
+   \texttt{z <- x+y} \\
+   \texttt{y <- 17} \\
+What is the value z? \\
+    a. 30 \\
+    b. 47 \\
+    c. 30.6 \\
+    d. 17.6
+\end{column}
+\end{columns}
 
 # Moving beyond calculators
 
